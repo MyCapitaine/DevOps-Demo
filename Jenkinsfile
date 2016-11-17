@@ -2,9 +2,6 @@ node {
     stage('SCM') {
         git 'https://github.com/MyCapitaine/DevOps-Demo.git'
     }
-    stage('QA') {
-        sh '/home/hutao/sonar-scanner/bin/sonar-scanner'
-    }
     stage('deploy') {
         sh "docker stop my || true"
         sh "docker rm my || true"
