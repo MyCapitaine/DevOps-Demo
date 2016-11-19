@@ -3,7 +3,7 @@ node {
         git 'https://github.com/MyCapitaine/DevOps-Demo.git'
     }
     stage('QA') {
-        sh 'sonar-scanner || true'
+        sh '/home/hutao/sonar-scanner/bin/sonar-scanner'
     }
     stage('build') {
         def mvnHome = tool 'M3'
