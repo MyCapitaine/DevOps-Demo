@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.user.User;
-import controller.util.encrypt.Encryptor;
 @WebServlet("/")
 public class LoginView extends HttpServlet {
 	@Override
