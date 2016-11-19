@@ -1,0 +1,7 @@
+<Context>
+  <Resource name="jdbc/ancientbooksdb_test" auth="Container" type="javax.sql.DataSource"
+               maxActive="50" maxIdle="30" maxWait="10000" logAbandoned="true" 
+               username="root" password="101001000" driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://localhost:3306/devopsdemo?autoReconnect=true"
+               characterEncoding="UTF-8" useUnicode="true"/>
+</Context>
