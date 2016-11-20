@@ -4,7 +4,7 @@ create schema devopsdemo;
 use devopsdemo;
 
 create table users(
-    uname varchar(20) unique,
+    uname varchar(20) unique
 );
 
 create table items(
@@ -13,9 +13,9 @@ create table items(
     iInfo varchar(100),
     possibility varchar(5),
     influence varchar(5),
-    trigger varchar(5),
+    tri varchar(5),
     submitUser varchar(20),
-    riskState varchar(5),
+    riskState varchar(5)
 );
 
 create table problems(
