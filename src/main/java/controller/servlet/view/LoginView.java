@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.user.User;
+@SuppressWarnings("serial")
 @WebServlet("/")
 public class LoginView extends HttpServlet {
 	@Override
@@ -17,7 +18,7 @@ public class LoginView extends HttpServlet {
 		resp.setCharacterEncoding("utf-8");
 		Object uname = null;
 		if((uname = req.getSession().getAttribute("loginName")) != null) {
-			resp.sendRedirect("/user/" + uname);
+			resp.sendRedirect("/DevOpsDemo/user/" + uname);
 		}
 		else {
 			resp.getWriter().write("<!DOCTYPE HTML>\n" +
@@ -32,8 +33,8 @@ public class LoginView extends HttpServlet {
 				"        <p>(用check用户进行登录)</p>\n" +
 				"    </div>\n" +
 				"    <form method='POST'>\n" +
-				"        <input placeholder='Username' type='text' name='loginName'>\n" +
-				"        <input type='submit' >log in</input>\n" +
+				"        <input placeholder='Username' type='text' name='loginName' />\n" +
+				"        <input type='submit' value='log in' />\n" +
 				"    </form>\n" +
 				"</body>\n");
 		}
@@ -41,15 +42,12 @@ public class LoginView extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String loginName = req.getAttribute("loginName") == null ? null : req.getAttribute("loginName").toString();
+		String loginName = req.getParameter("loginName") == null ? null : req.getParameter("loginName").toString();
 		if(User.checkUser(loginName)) {
 			HttpSession session = req.getSession(true);
 			session.setAttribute("loginName", loginName);
 			session.setMaxInactiveInterval(3*24*60*60);
 		}
-		else {
-			resp.sendRedirect("/DevOpsDemo/");
-		}
-		
+		resp.sendRedirect(req.getRequestURI());
 	}
 }
